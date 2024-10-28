@@ -10,7 +10,7 @@ function App() {
         <NavBar />
         <div className='main-content'>
           <Routes>
-            <Route path="/chord-find" element={<ChordFinder />} />
+            <Route path="/" element={<ChordFinder />} />
           </Routes>
         </div>
       </div>

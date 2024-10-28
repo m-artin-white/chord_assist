@@ -1,0 +1,90 @@
+{
+    "chords": [
+      {
+        "name": "C Major",
+        "type": "Major",
+        "notes": ["C", "E", "G"],
+        "intervals": ["1", "3", "5"],
+        "related_progressions": {
+          "I": {
+            "chord": "C Major",
+            "notes": ["C", "E", "G"],
+            "position": "I"
+          },
+          "ii": {
+            "chord": "D minor",
+            "notes": ["D", "F", "A"],
+            "position": "ii"
+          },
+          "iii": {
+            "chord": "E minor",
+            "notes": ["E", "G", "B"],
+            "position": "iii"
+          },
+          "IV": {
+            "chord": "F Major",
+            "notes": ["F", "A", "C"],
+            "position": "IV"
+          },
+          "V": {
+            "chord": "G Major",
+            "notes": ["G", "B", "D"],
+            "position": "V"
+          },
+          "vi": {
+            "chord": "A minor",
+            "notes": ["A", "C", "E"],
+            "position": "vi"
+          },
+          "vii°": {
+            "chord": "B diminished",
+            "notes": ["B", "D", "F"],
+            "position": "vii°"
+          }
+        }
+      },
+      {
+        "name": "C Minor",
+        "type": "Minor",
+        "notes": ["C", "Eb", "G"],
+        "intervals": ["1", "b3", "5"],
+        "related_progressions": {
+          "i": {
+            "chord": "C minor",
+            "notes": ["C", "Eb", "G"],
+            "position": "i"
+          },
+          "ii°": {
+            "chord": "D diminished",
+            "notes": ["D", "F", "Ab"],
+            "position": "ii°"
+          },
+          "III": {
+            "chord": "Eb Major",
+            "notes": ["Eb", "G", "Bb"],
+            "position": "III"
+          },
+          "iv": {
+            "chord": "F minor",
+            "notes": ["F", "Ab", "C"],
+            "position": "iv"
+          },
+          "v": {
+            "chord": "G minor",
+            "notes": ["G", "Bb", "D"],
+            "position": "v"
+          },
+          "VI": {
+            "chord": "Ab Major",
+            "notes": ["Ab", "C", "Eb"],
+            "position": "VI"
+          },
+          "VII": {
+            "chord": "Bb Major",
+            "notes": ["Bb", "D", "F"],
+            "position": "VII"
+          }
+        }
+      }
+    ]
+  }

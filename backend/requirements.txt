@@ -1,0 +1,5 @@
+uvicorn
+python-multipart
+fastapi[all]
+ollama
+pyyaml
