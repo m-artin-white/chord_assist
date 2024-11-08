@@ -1,5 +1,4 @@
 npm install axios
-npm install bootstrap
 npm install @popperjs/core
 npm install react-bootstrap
 npm install react-router-dom
