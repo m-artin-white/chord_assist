@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown'; 
+import ReactMarkdown from 'react-markdown';
 import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
 import Fretboard from './Fretboard';
-import chordData from "../chord_data/chords.json";
 import UserPic from '../assets/user.png';
 import ChatbotPic from '../assets/chatbot.png';
+import * as Chord from '@tonaljs/chord';
+
 
 const ChordFinder = () => {
   const styles = {
@@ -26,7 +27,7 @@ const ChordFinder = () => {
       paddingBottom: '0px',
       marginTop: '30px',
       height: '91vh',
-      borderRight: '5px solid lightgrey', 
+      borderRight: '5px solid lightgrey',
     },
     rightSideSection: {
       backgroundColor: 'white',
@@ -154,13 +155,14 @@ const ChordFinder = () => {
   };
 
   const checkForMatchingChords = (notes) => {
-    const uniqueSelectedNotes = [...new Set(notes.map(note => note.note))].sort();
-    const matchingChords = chordData.chords.filter(chord => {
-      const uniqueChordNotes = [...new Set(chord.notes)].sort();
-      return JSON.stringify(uniqueChordNotes) === JSON.stringify(uniqueSelectedNotes);
-    });
+    // Extract the note names from the selected notes
+    const noteNames = notes.map(note => note.note);
 
-    setPossibleChords(matchingChords.map(chord => chord.name));
+    // Use the @tonaljs/chord library to detect possible chords
+    const detectedChords = Chord.detect(noteNames);
+
+    // Set possible chords found
+    setPossibleChords(detectedChords);
   };
 
   const handleSendMessage = async () => {
@@ -198,7 +200,6 @@ const ChordFinder = () => {
       setLoading(false); // Stop loading spinner
     }
   };
-  
 
   return (
     <Container fluid style={styles.mainContainer}>
@@ -259,7 +260,7 @@ const ChordFinder = () => {
           <h5>Select Tuning</h5>
           {currentTuning.map((note, index) => (
             <Form.Group key={index} controlId={`tuning-select-${index}`}>
-              <Form.Label>String {(6 + index)%6 + 1}</Form.Label>
+              <Form.Label>String {(6 + index) % 6 + 1}</Form.Label>
               <Form.Control
                 as="select"
                 value={note}
