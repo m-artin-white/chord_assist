@@ -111,7 +111,12 @@ const ChordFinder = () => {
 
   const [selectedNotes, setSelectedNotes] = useState([]);
   const [possibleChords, setPossibleChords] = useState([]);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      sender: 'Bot',
+      text: 'Welcome! I am The String Sage, your guide to music theory, guitar chords, and chord progressions. Feel free to ask any questions related to these topics!'
+    }
+  ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
 
@@ -158,9 +163,12 @@ const ChordFinder = () => {
     setInput('');
     setLoading(true); // Start loading spinner
   
+    const chordName = possibleChords.length > 0 ? possibleChords[0] : "";
+  
     try {
       const formData = new FormData();
       formData.append("text", input);
+      formData.append("chord", chordName); // Add chord as an additional parameter
   
       const response = await axios.post('http://127.0.0.1:8000/upload', formData, {
         headers: {
@@ -177,6 +185,7 @@ const ChordFinder = () => {
       setLoading(false); // Stop loading spinner
     }
   };
+  
 
   return (
     <Container fluid style={styles.mainContainer}>
