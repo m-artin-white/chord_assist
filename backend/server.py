@@ -19,7 +19,7 @@ app.add_middleware(
 @app.post("/upload")
 async def upload_content(
     text: str = Form(...),
-    chord: str = Form(...)        
+    noteOrChord: str = Form(...)        
 ):
-    response = llm.query(query=text, chord=chord)
+    response = llm.query(query=text, chord=noteOrChord)
     return JSONResponse(content={"message": response})

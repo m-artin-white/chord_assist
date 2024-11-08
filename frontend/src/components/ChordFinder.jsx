@@ -31,8 +31,7 @@ const ChordFinder = () => {
     rightSideSection: {
       backgroundColor: 'white',
       padding: '15px',
-      marginTop: '30px',
-      height: '90vh',
+      marginTop: '50px',
     },
     chatContainer: {
       display: 'flex',
@@ -118,7 +117,16 @@ const ChordFinder = () => {
     }
   ]);
   const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
+  const [currentTuning, setCurrentTuning] = useState(['E', 'B', 'G', 'D', 'A', 'E']);
+
+  const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+  const handleTuningChange = (stringIndex, newNote) => {
+    const updatedTuning = [...currentTuning];
+    updatedTuning[stringIndex] = newNote;
+    setCurrentTuning(updatedTuning);
+  };
 
   const handleNoteSelection = (note) => {
     setSelectedNotes((prev) => {
@@ -163,12 +171,17 @@ const ChordFinder = () => {
     setInput('');
     setLoading(true); // Start loading spinner
   
-    const chordName = possibleChords.length > 0 ? possibleChords[0] : "";
+    // Determine whether it's a "Note" or "Chord"
+    const noteOrChord = selectedNotes.length === 1 
+      ? `Note: ${selectedNotes[0].note}` 
+      : selectedNotes.length > 1 
+        ? `Chord: ${possibleChords.join(', ')}` 
+        : '';
   
     try {
       const formData = new FormData();
       formData.append("text", input);
-      formData.append("chord", chordName); // Add chord as an additional parameter
+      formData.append("noteOrChord", noteOrChord); // Match key with FastAPI parameter
   
       const response = await axios.post('http://127.0.0.1:8000/upload', formData, {
         headers: {
@@ -222,24 +235,42 @@ const ChordFinder = () => {
         </Col>
         <Col xs={7} style={styles.middleSection}>
           <div style={styles.middleTop}>
-            <Fretboard 
-              selectedNotes={selectedNotes} 
-              onNoteSelect={handleNoteSelection} 
-              onNoteDeselect={handleNoteDeselection} 
+            <Fretboard
+              selectedNotes={selectedNotes}
+              onNoteSelect={handleNoteSelection}
+              onNoteDeselect={handleNoteDeselection}
+              tuning={currentTuning}
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
             <Button variant="danger" onClick={resetSelection}>Reset</Button>
           </div>
           <div style={styles.middleMiddle}>
-            {possibleChords.length > 0 
-              ? `Possible Chords: ${possibleChords.join(', ')}`
-              : 'No Chord Matched'}
+            {selectedNotes.length === 1 
+              ? `Note: ${selectedNotes[0].note}`
+              : selectedNotes.length > 1
+                ? `Chords: ${possibleChords.length > 0 ? possibleChords.join(', ') : 'No Chord Matched'}`
+                : 'No Note Selected'}
           </div>
           <div style={styles.middleBottom}>
           </div>
         </Col>
         <Col xs={2} style={styles.rightSideSection}>
+          <h5>Select Tuning</h5>
+          {currentTuning.map((note, index) => (
+            <Form.Group key={index} controlId={`tuning-select-${index}`}>
+              <Form.Label>String {(6 + index)%6 + 1}</Form.Label>
+              <Form.Control
+                as="select"
+                value={note}
+                onChange={(e) => handleTuningChange(index, e.target.value)}
+              >
+                {notes.map((n, i) => (
+                  <option key={i} value={n}>{n}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+          ))}
         </Col>
       </Row>
     </Container>

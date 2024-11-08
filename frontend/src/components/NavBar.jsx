@@ -33,8 +33,14 @@ function NavBar() {
             <li className="nav-item">
               <Link className="nav-link" to="/" style={{ color: '#FFFFFF' }}>Chord Finder</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/chords" style={{ color: '#FFFFFF' }}>Chord Diagrams</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/progressions" style={{ color: '#FFFFFF' }}>Chord Progressions</Link>
+            </li>
           </ul>
-          <button
+          {/* <button
             type="button"
             className="btn"
             style={loginButtonStyle}
@@ -42,7 +48,7 @@ function NavBar() {
             onMouseLeave={() => setIsHovered(false)}
           >
             Login
-          </button>
+          </button> */}
         </div>
       </div>
     </nav>

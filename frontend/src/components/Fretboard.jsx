@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect }) => {
-  const standardTuning = ['E', 'B', 'G', 'D', 'A', 'E'];
+const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
   const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
   
   const calculateNote = (stringNote, fret) => {
@@ -11,7 +10,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect }) => {
   };
 
   const handleFretClick = (stringIndex, fret) => {
-    const openNote = standardTuning[stringIndex];
+    const openNote = tuning[stringIndex];
     const note = calculateNote(openNote, fret);
     const stringNumber = 6 - stringIndex;
 
@@ -68,7 +67,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect }) => {
         
         {/* Strings and frets */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          {standardTuning.map((openNote, stringIndex) => (
+          {tuning.map((openNote, stringIndex) => (
             <div 
               key={stringIndex} 
               className="d-flex align-items-center" 

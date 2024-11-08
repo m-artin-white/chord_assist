@@ -1,6 +1,8 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import ChordFinder from './components/ChordFinder';
+import ChordViewer from './components/ChordViewer'
+import ProgressionViewer from './components/ProgressionViewer'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
         <div className='main-content'>
           <Routes>
             <Route path="/" element={<ChordFinder />} />
+            <Route path="/chords" element={<ChordViewer />} />
+            <Route path="/progressions" element={<ProgressionViewer />} />
           </Routes>
         </div>
       </div>

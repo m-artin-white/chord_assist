@@ -1,6 +1,402 @@
 {
     "chords": [
       {
+        "name": "C",
+        "notes": ["C"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "C#",
+        "notes": ["C#"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "D",
+        "notes": ["D"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "D#",
+        "notes": ["D#"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "E",
+        "notes": ["E"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "F",
+        "notes": ["F"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "F#",
+        "notes": ["F#"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "G",
+        "notes": ["G"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "G#",
+        "notes": ["G#"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "A",
+        "notes": ["A"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "A#",
+        "notes": ["A#"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
+        "name": "B",
+        "notes": ["B"],
+        "scalesAndModes": {
+          "Major (Ionian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Natural Minor (Aeolian Mode)": {
+            "notes": ["C", "E", "G"]
+          },
+          "Harmonic Minor": {
+            "notes": ["D", "F", "A"]
+          },
+          "Melodic Minor": {
+            "notes": ["E", "G", "B"]
+          },
+          "Dorian": {
+            "notes": ["F", "A", "C"]
+          },
+          "Phrygian": {
+            "notes": ["G", "B", "D"]
+          },
+          "Lydian": {
+            "notes": ["A", "C", "E"]
+          },
+          "Mixolydian": {
+            "notes": ["B", "D", "F"]
+          },
+          "Locrian": {
+            "notes": ["B", "D", "F"]
+          }
+        }
+      },
+      {
         "name": "C Major",
         "type": "Major",
         "notes": ["C", "E", "G"],
