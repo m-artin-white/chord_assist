@@ -4,3 +4,5 @@ npm install react-bootstrap
 npm install react-router-dom
 npm install react-markdown
 npm install tonal
+npm install tone
+npm install @tonaljs/note
