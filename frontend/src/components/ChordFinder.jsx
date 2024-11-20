@@ -6,7 +6,8 @@ import Fretboard from './Fretboard';
 import UserPic from '../assets/user.png';
 import ChatbotPic from '../assets/chatbot.png';
 import * as Chord from '@tonaljs/chord';
-
+import * as Tone from 'tone';
+import * as Note from '@tonaljs/note';
 
 const ChordFinder = () => {
   const styles = {
@@ -201,6 +202,39 @@ const ChordFinder = () => {
     }
   };
 
+  const playChord = async () => {
+    await Tone.start();
+    const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+    const now = Tone.now();
+
+   
+    const stringOctaves = {
+        6: 2, // Low E string
+        5: 2, // A string
+        4: 3, // D string
+        3: 3, // G string
+        2: 3, // B string
+        1: 4  // High E string
+    };
+
+    selectedNotes.forEach(note => {
+      const stringNumber = note.string; 
+      const baseNote = note.note.replace(/[0-9]/g, ''); 
+      let octave = stringOctaves[stringNumber];
+
+    
+      if (note.fret >= 6) {
+          octave += 1;
+      }
+
+      const noteWithOctave = `${baseNote}${octave}`; 
+      const midiNote = Note.midi(noteWithOctave); 
+      const formattedNote = Note.fromMidi(midiNote); 
+      console.log(formattedNote); 
+      synth.triggerAttackRelease(formattedNote, "8n", now);
+  });
+};
+
   return (
     <Container fluid style={styles.mainContainer}>
       <Row style={styles.fullHeightRow}>
@@ -245,6 +279,7 @@ const ChordFinder = () => {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
             <Button variant="danger" onClick={resetSelection}>Reset</Button>
+            <Button variant="success" onClick={playChord} style={{ marginLeft: '10px' }}>Play Chord</Button>
           </div>
           <div style={styles.middleMiddle}>
             {selectedNotes.length === 1 
