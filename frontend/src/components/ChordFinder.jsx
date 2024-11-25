@@ -209,12 +209,12 @@ const ChordFinder = () => {
 
    
     const stringOctaves = {
-        6: 2, // Low E string
-        5: 2, // A string
-        4: 3, // D string
-        3: 3, // G string
-        2: 3, // B string
-        1: 4  // High E string
+      1: 2, // Low E string (formerly string 6)
+      2: 2, // A string (formerly string 5)
+      3: 3, // D string (formerly string 4)
+      4: 3, // G string (formerly string 3)
+      5: 3, // B string (formerly string 2)
+      6: 4  // High E string (formerly string 1)
     };
 
     selectedNotes.forEach(note => {
@@ -231,6 +231,7 @@ const ChordFinder = () => {
       const midiNote = Note.midi(noteWithOctave); 
       const formattedNote = Note.fromMidi(midiNote); 
       console.log(formattedNote); 
+      console.log(`String: ${note.string}, Fret: ${note.fret}, Base Note: ${baseNote}, Octave: ${octave}`);
       synth.triggerAttackRelease(formattedNote, "8n", now);
   });
 };
