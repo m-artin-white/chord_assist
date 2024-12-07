@@ -39,6 +39,9 @@ function NavBar() {
             <li className="nav-item">
               <Link className="nav-link" to="/progressions" style={{ color: '#FFFFFF' }}>Chord Progressions</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/resources" style={{ color: '#FFFFFF' }}>Resources</Link>
+            </li>
           </ul>
           {/* <button
             type="button"

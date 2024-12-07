@@ -6,4 +6,5 @@ npm install react-markdown
 npm install tonal
 npm install tone
 npm install @tonaljs/note
+npm install @tonaljs/tonal
 npm install react-chords
