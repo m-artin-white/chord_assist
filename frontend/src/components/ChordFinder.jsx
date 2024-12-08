@@ -253,27 +253,27 @@ return (
   // Main container wrapping the entire layout, making it fluid to use the full viewport width
   <Container fluid style={styles.mainContainer}> 
     
-    // Row component ensuring full-height distribution of the sections
+    {/* Row component ensuring full-height distribution of the sections */}
     <Row style={styles.fullHeightRow}>
       
-      // Left column for the chat section
+      {/* Left column for the chat section */}
       <Col xs={3} style={styles.leftSideSection}> 
         <div style={styles.chatContainer}> 
           
-          // Chat messages section to display user and chatbot messages
+          {/* Chat messages section to display user and chatbot messages */}
           <div style={styles.chatMessages}> 
             {messages.map((msg, index) => (
               // Individual message container with unique key for each message
               <div key={index} style={styles.messageContainer}> 
                 
-                // Display user or chatbot profile picture based on the sender
+                {/* Display user or chatbot profile picture based on the sender */}
                 <img 
                   src={msg.sender === 'User' ? UserPic : ChatbotPic} 
                   alt={`${msg.sender} avatar`} 
                   style={styles.profilePic} 
                 />
                 
-                // Render message text using ReactMarkdown for markdown support
+                {/* Render message text using ReactMarkdown for markdown support */}
                 <div style={{ color: '#000000' }}> 
                   <ReactMarkdown>{msg.text}</ReactMarkdown>
                 </div>
@@ -281,7 +281,7 @@ return (
             ))}
           </div>
           
-          // Chat input container with text input and send button
+          {/* Chat input container with text input and send button */}
           <div style={styles.chatInputContainer}> 
             <Form.Control 
               type="text" 
@@ -303,17 +303,17 @@ return (
                     role="status" 
                     aria-hidden="true" 
                   /> 
-                : 'Send'} // Displays spinner if loading, otherwise "Send"
+                : 'Send'} {/*Displays spinner if loading, otherwise "Send" */} 
             </Button>
           </div>
         </div>
       </Col>
       
-      // Middle column for fretboard and chord-related functionality
+      {/* Middle column for fretboard and chord-related functionality */}
       <Col xs={7} style={styles.middleSection}> 
         <div style={styles.middleTop}> 
           
-          // Fretboard component with handlers for note selection/deselection
+          {/* Fretboard component with handlers for note selection/deselection */}
           <Fretboard 
             selectedNotes={selectedNotes} 
             onNoteSelect={handleNoteSelection} 
@@ -322,7 +322,7 @@ return (
           />
         </div>
         
-        // Reset and play chord buttons
+        {/* Reset and play chord buttons */}
         <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}> 
           <Button variant="danger" onClick={resetSelection}>Reset</Button>
           <Button 
@@ -334,7 +334,7 @@ return (
           </Button>
         </div>
         
-        // Display selected notes or possible chords based on the selection
+        {/* Display selected notes or possible chords based on the selection */}
         <div style={styles.middleMiddle}> 
           {selectedNotes.length === 1 
             ? `Note: ${selectedNotes[0].note}` 
@@ -345,16 +345,16 @@ return (
               : 'No Note Selected'}
         </div>
         
-        // Placeholder for additional components or information
+        {/* Placeholder for additional components or information */}
         <div style={styles.middleBottom}> 
         </div>
       </Col>
       
-      // Right column for tuning selection
+      {/* Right column for tuning selection */}
       <Col xs={2} style={styles.rightSideSection}> 
         <h5>Select Tuning</h5>
         
-        // Render dropdown selectors for each string's tuning
+        {/* Render dropdown selectors for each string's tuning */}
         {currentTuning.map((note, index) => (
           <Form.Group key={index} controlId={`tuning-select-${index}`}> 
             <Form.Label>String {(6 + index) % 6 + 1}</Form.Label>
