@@ -1,18 +1,20 @@
 import React from 'react';
 
 const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
-  const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-  
+  const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']; // All musical notes
+
+  // Calculate the note at a specific fret on a string
   const calculateNote = (stringNote, fret) => {
-    const noteIndex = notes.indexOf(stringNote);
-    const newNoteIndex = (noteIndex + fret) % 12;
-    return notes[newNoteIndex];
+    const noteIndex = notes.indexOf(stringNote); // Find the index of the open string note
+    const newNoteIndex = (noteIndex + fret) % 12; // Calculate the index of the note at the given fret
+    return notes[newNoteIndex]; // Return the calculated note
   };
 
+  // Handle the click event on a fret
   const handleFretClick = (stringIndex, fret) => {
-    const openNote = tuning[stringIndex];
-    const note = calculateNote(openNote, fret);
-    const stringNumber = 6 - stringIndex;
+    const openNote = tuning[stringIndex]; // Get the open note of the string
+    const note = calculateNote(openNote, fret); // Calculate the note at the selected fret
+    const stringNumber = 6 - stringIndex; // Convert stringIndex to string number (1-6)
 
     // Check if the note is already selected
     const isSelected = selectedNotes.some(
@@ -20,12 +22,13 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
     );
 
     if (isSelected) {
-      onNoteDeselect({ string: stringNumber, fret });
+      onNoteDeselect({ string: stringNumber, fret }); // Deselect the note if it is already selected
     } else {
-      onNoteSelect({ string: stringNumber, fret, note });
+      onNoteSelect({ string: stringNumber, fret, note }); // Select the note if it is not already selected
     }
   };
 
+  // Check if a specific note is selected
   const isNoteSelected = (stringIndex, fret) => {
     return selectedNotes.some(
       note => note.string === (6 - stringIndex) && note.fret === fret
@@ -48,9 +51,9 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
              padding: '10px',
              position: 'relative'
            }}>
-        {/* Fret numbers */}
+        {/* Fret numbers displayed horizontally */}
         <div className="d-flex" style={{ height: '8%' }}>
-          <div style={{ width: '3%' }}></div>
+          <div style={{ width: '3%' }}></div> {/* Empty space for alignment */}
           {[...Array(16)].map((_, i) => (
             <div 
               key={i} 
@@ -60,12 +63,12 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                 fontSize: '11px'
               }}
             >
-              {i}
+              {i} {/* Fret number */}
             </div>
           ))}
         </div>
         
-        {/* Strings and frets */}
+        {/* Strings and frets section */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           {tuning.map((openNote, stringIndex) => (
             <div 
@@ -76,7 +79,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                 position: 'relative', 
               }}
             >
-              {/* String line */}
+              {/* String line visualization */}
               <div style={{
                 position: 'absolute',
                 width: '100%',
@@ -85,7 +88,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                 zIndex: 1
               }} />
               
-              {/* Open note */}
+              {/* Display the open note of the string */}
               <div 
                 style={{ 
                   width: '3%', 
@@ -98,15 +101,15 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                 {openNote}
               </div>
               
-              {/* Frets */}
+              {/* Frets on the string */}
               {[...Array(16)].map((_, fret) => (
                 <div 
                   key={fret}
-                  onClick={() => handleFretClick(stringIndex, fret)}
+                  onClick={() => handleFretClick(stringIndex, fret)} // Handle click event for the fret
                   style={{ 
                     width: `${5.8}%`,
                     height: '100%',
-                    borderRight: '2px solid #8b4513',
+                    borderRight: '2px solid #8b4513', // Visualize frets
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -116,6 +119,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                   }}
                 >
                   {isNoteSelected(stringIndex, fret) && (
+                    // Visual indicator for a selected note
                     <div style={{
                       width: '20px',
                       height: '20px',
@@ -127,7 +131,7 @@ const Fretboard = ({ selectedNotes, onNoteSelect, onNoteDeselect, tuning }) => {
                       color: 'white',
                       fontSize: '11px'
                     }}>
-                      {calculateNote(openNote, fret)}
+                      {calculateNote(openNote, fret)} {/* Display the selected note */}
                     </div>
                   )}
                 </div>

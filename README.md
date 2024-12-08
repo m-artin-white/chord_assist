@@ -41,3 +41,7 @@ ___
 5. Run the commands that are stored in the 'requirements.txt' in the frontend folder. This will install the required libraries for the React-app to run. You will have to run a command like so "npm install axios @popperjs/core react-bootstrap ...". Ensure you install all libraries within requirements.txt.
 6. To run the application run 'npm run dev' in the terminal.
 7. Open up 'localhost:5173' in your browser to view application.
+
+# Running Tests:
+1. To run the tests for the backend, cd into backend and run "pytest ./tests".
+2. To run the tests for the frontend, cd into frontend and run "npm test".

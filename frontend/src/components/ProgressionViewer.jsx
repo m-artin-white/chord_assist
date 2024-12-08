@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Key, Progression } from "@tonaljs/tonal";
 
 function ProgressionViewer() {
-  const [chord, setChord] = useState("C"); // Default chord set to "C"
-  const [progressions, setProgressions] = useState([]);
+  const [chord, setChord] = useState("C"); // State to store the currently entered chord (default is "C")
+  const [progressions, setProgressions] = useState([]); // State to store the generated progressions
 
-  // Define progression types
+  // Define progression templates with their names and Roman numeral patterns
   const progressionTemplates = [
     { name: "Basic Progression (I-IV-V-I)", roman: ["I", "IV", "V", "I"] },
     { name: "Pop Progression (I-V-vi-IV)", roman: ["I", "V", "vi", "IV"] },
@@ -22,38 +22,41 @@ function ProgressionViewer() {
     { name: "Rock Progression (I-bVII-IV-I)", roman: ["I", "bVII", "IV", "I"] },
   ];
 
+  // Update the chord state when the input value changes
   const handleInputChange = (e) => {
     setChord(e.target.value);
   };
 
+  // Generate progressions based on the selected chord and templates
   const handleGenerateProgressions = () => {
     try {
-      const key = Key.majorKey(chord);
+      const key = Key.majorKey(chord); // Get the key for the entered chord
       if (!key || key.chords.length === 0) {
-        setProgressions([]);
+        setProgressions([]); // Clear progressions if the chord is invalid
         return;
       }
 
-      // Generate progressions for all templates
+      // Map through the templates and generate chord progressions
       const generatedProgressions = progressionTemplates.map((template) => {
-        const chords = Progression.fromRomanNumerals(chord, template.roman);
-        return { name: template.name, chords, roman: template.roman };
+        const chords = Progression.fromRomanNumerals(chord, template.roman); // Convert Roman numerals to chords
+        return { name: template.name, chords, roman: template.roman }; // Return the template with chords
       });
 
-      setProgressions(generatedProgressions);
+      setProgressions(generatedProgressions); // Update state with generated progressions
     } catch (error) {
-      console.error("Error generating progressions:", error);
-      setProgressions([]);
+      console.error("Error generating progressions:", error); // Log any errors
+      setProgressions([]); // Clear progressions if there's an error
     }
   };
 
-  // Use `useEffect` to generate progressions when the component mounts
+  // Automatically generate progressions when the component mounts
   useEffect(() => {
     handleGenerateProgressions();
-  }, []);
+  }, []); // Empty dependency array ensures this runs only on mount
 
   return (
     <div style={{ marginTop: "50px", padding: "20px", fontFamily: "Arial" }}>
+      {/* Input section for entering the chord */}
       <div style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}>
         <label
           htmlFor="chord-input"
@@ -68,9 +71,9 @@ function ProgressionViewer() {
         <input
           id="chord-input"
           type="text"
-          placeholder="e.g., C, D#, Bb"
-          value={chord}
-          onChange={handleInputChange}
+          placeholder="e.g., C, D#, Bb" // Example placeholder text
+          value={chord} // Bind input value to state
+          onChange={handleInputChange} // Update state on input change
           style={{
             padding: "10px",
             fontSize: "16px",
@@ -78,7 +81,7 @@ function ProgressionViewer() {
           }}
         />
         <button
-          onClick={handleGenerateProgressions}
+          onClick={handleGenerateProgressions} // Generate progressions when clicked
           style={{
             padding: "10px 20px",
             fontSize: "16px",
@@ -90,6 +93,7 @@ function ProgressionViewer() {
         </button>
       </div>
 
+      {/* Display the generated progressions if any exist */}
       {progressions.length > 0 && (
         <div
           style={{
@@ -101,7 +105,7 @@ function ProgressionViewer() {
         >
           {progressions.map((prog, index) => (
             <div
-              key={index}
+              key={index} // Unique key for each progression
               style={{
                 border: "1px solid #ddd",
                 borderRadius: "8px",
@@ -110,6 +114,7 @@ function ProgressionViewer() {
                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
               }}
             >
+              {/* Display the name of the progression */}
               <h2 style={{ fontSize: "18px", marginBottom: "10px" }}>
                 {prog.name}
               </h2>
@@ -145,7 +150,7 @@ function ProgressionViewer() {
                           padding: "5px",
                         }}
                       >
-                        {prog.roman[i]}
+                        {prog.roman[i]} {/* Roman numeral for the chord */}
                       </td>
                       <td
                         style={{
@@ -153,7 +158,7 @@ function ProgressionViewer() {
                           padding: "5px",
                         }}
                       >
-                        {ch}
+                        {ch} {/* Generated chord */}
                       </td>
                     </tr>
                   ))}

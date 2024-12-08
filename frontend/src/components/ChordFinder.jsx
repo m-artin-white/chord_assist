@@ -10,6 +10,7 @@ import * as Tone from 'tone';
 import * as Note from '@tonaljs/note';
 
 const ChordFinder = () => {
+  // Setting up the styles for different components on the UI.
   const styles = {
     mainContainer: {
       minHeight: '100vh',
@@ -110,26 +111,34 @@ const ChordFinder = () => {
     }
   };
 
+  // Setting up state variable to keep track of currently selected notes on fretboard.
   const [selectedNotes, setSelectedNotes] = useState([]);
+  // Setting up state variable to keep track of possible chords that the selected notes may represent.
   const [possibleChords, setPossibleChords] = useState([]);
+  // State variable to hold messages from chatbot.
   const [messages, setMessages] = useState([
     {
       sender: 'Bot',
       text: 'Welcome! I am The String Sage, your guide to music theory, guitar chords, and chord progressions. Feel free to ask any questions related to these topics!'
     }
   ]);
+  // State variable for user messages to chatbot.
   const [input, setInput] = useState('');
+  // State variable to track loading state.
   const [loading, setLoading] = useState(false);
+  // State variable to capture current tuning of fretboard.
   const [currentTuning, setCurrentTuning] = useState(['E', 'B', 'G', 'D', 'A', 'E']);
 
   const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
+  // Function to update current tuning of fretboard.
   const handleTuningChange = (stringIndex, newNote) => {
     const updatedTuning = [...currentTuning];
     updatedTuning[stringIndex] = newNote;
     setCurrentTuning(updatedTuning);
   };
 
+  // Function to handle note selection. 
   const handleNoteSelection = (note) => {
     setSelectedNotes((prev) => {
       const filteredNotes = prev.filter(n => n.string !== note.string);
@@ -140,6 +149,7 @@ const ChordFinder = () => {
     });
   };
 
+  // Function to handle note deselection.
   const handleNoteDeselection = (note) => {
     setSelectedNotes((prev) => {
       const updatedNotes = prev.filter(
@@ -150,11 +160,13 @@ const ChordFinder = () => {
     });
   };
 
+  // Function to reset fretboard (clear selected notes).
   const resetSelection = () => {
     setSelectedNotes([]);
     setPossibleChords([]);
   };
 
+  // Function that uses tonaljs/chord api to find chords for a set of notes.
   const checkForMatchingChords = (notes) => {
     // Extract the note names from the selected notes
     const noteNames = notes.map(note => note.note);
@@ -166,6 +178,7 @@ const ChordFinder = () => {
     setPossibleChords(detectedChords);
   };
 
+  // Function to interact with chatbot.
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
   
@@ -236,82 +249,132 @@ const ChordFinder = () => {
   });
 };
 
-  return (
-    <Container fluid style={styles.mainContainer}>
-      <Row style={styles.fullHeightRow}>
-        <Col xs={3} style={styles.leftSideSection}>
-          <div style={styles.chatContainer}>
-            <div style={styles.chatMessages}>
-              {messages.map((msg, index) => (
-                <div key={index} style={styles.messageContainer}>
-                  <img
-                    src={msg.sender === 'User' ? UserPic : ChatbotPic}
-                    alt={`${msg.sender} avatar`}
-                    style={styles.profilePic}
-                  />
-                  <div style={{ color: '#000000' }}>
-                    <ReactMarkdown>{msg.text}</ReactMarkdown>
-                  </div>
+return (
+  // Main container wrapping the entire layout, making it fluid to use the full viewport width
+  <Container fluid style={styles.mainContainer}> 
+    
+    // Row component ensuring full-height distribution of the sections
+    <Row style={styles.fullHeightRow}>
+      
+      // Left column for the chat section
+      <Col xs={3} style={styles.leftSideSection}> 
+        <div style={styles.chatContainer}> 
+          
+          // Chat messages section to display user and chatbot messages
+          <div style={styles.chatMessages}> 
+            {messages.map((msg, index) => (
+              // Individual message container with unique key for each message
+              <div key={index} style={styles.messageContainer}> 
+                
+                // Display user or chatbot profile picture based on the sender
+                <img 
+                  src={msg.sender === 'User' ? UserPic : ChatbotPic} 
+                  alt={`${msg.sender} avatar`} 
+                  style={styles.profilePic} 
+                />
+                
+                // Render message text using ReactMarkdown for markdown support
+                <div style={{ color: '#000000' }}> 
+                  <ReactMarkdown>{msg.text}</ReactMarkdown>
                 </div>
-              ))}
-            </div>
-            <div style={styles.chatInputContainer}>
-              <Form.Control
-                type="text"
-                placeholder="Message Chord Assist..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                style={styles.chatInput}
-              />
-              <Button onClick={handleSendMessage} variant="primary" disabled={loading}>
-                {loading ? <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /> : 'Send'}
-              </Button>
-            </div>
+              </div>
+            ))}
           </div>
-        </Col>
-        <Col xs={7} style={styles.middleSection}>
-          <div style={styles.middleTop}>
-            <Fretboard
-              selectedNotes={selectedNotes}
-              onNoteSelect={handleNoteSelection}
-              onNoteDeselect={handleNoteDeselection}
-              tuning={currentTuning}
+          
+          // Chat input container with text input and send button
+          <div style={styles.chatInputContainer}> 
+            <Form.Control 
+              type="text" 
+              placeholder="Message Chord Assist..." 
+              value={input} 
+              onChange={(e) => setInput(e.target.value)} // Updates input state
+              style={styles.chatInput} 
             />
+            <Button 
+              onClick={handleSendMessage} 
+              variant="primary" 
+              disabled={loading} // Disables the button if loading
+            >
+              {loading 
+                ? <Spinner 
+                    as="span" 
+                    animation="border" 
+                    size="sm" 
+                    role="status" 
+                    aria-hidden="true" 
+                  /> 
+                : 'Send'} // Displays spinner if loading, otherwise "Send"
+            </Button>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
-            <Button variant="danger" onClick={resetSelection}>Reset</Button>
-            <Button variant="success" onClick={playChord} style={{ marginLeft: '10px' }}>Play Chord</Button>
-          </div>
-          <div style={styles.middleMiddle}>
-            {selectedNotes.length === 1 
-              ? `Note: ${selectedNotes[0].note}`
-              : selectedNotes.length > 1
-                ? `Chords: ${possibleChords.length > 0 ? possibleChords.join(', ') : 'No Chord Matched'}`
-                : 'No Note Selected'}
-          </div>
-          <div style={styles.middleBottom}>
-          </div>
-        </Col>
-        <Col xs={2} style={styles.rightSideSection}>
-          <h5>Select Tuning</h5>
-          {currentTuning.map((note, index) => (
-            <Form.Group key={index} controlId={`tuning-select-${index}`}>
-              <Form.Label>String {(6 + index) % 6 + 1}</Form.Label>
-              <Form.Control
-                as="select"
-                value={note}
-                onChange={(e) => handleTuningChange(index, e.target.value)}
-              >
-                {notes.map((n, i) => (
-                  <option key={i} value={n}>{n}</option>
-                ))}
-              </Form.Control>
-            </Form.Group>
-          ))}
-        </Col>
-      </Row>
-    </Container>
-  );
+        </div>
+      </Col>
+      
+      // Middle column for fretboard and chord-related functionality
+      <Col xs={7} style={styles.middleSection}> 
+        <div style={styles.middleTop}> 
+          
+          // Fretboard component with handlers for note selection/deselection
+          <Fretboard 
+            selectedNotes={selectedNotes} 
+            onNoteSelect={handleNoteSelection} 
+            onNoteDeselect={handleNoteDeselection} 
+            tuning={currentTuning} // Uses current tuning for the fretboard
+          />
+        </div>
+        
+        // Reset and play chord buttons
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}> 
+          <Button variant="danger" onClick={resetSelection}>Reset</Button>
+          <Button 
+            variant="success" 
+            onClick={playChord} 
+            style={{ marginLeft: '10px' }}
+          >
+            Play Chord
+          </Button>
+        </div>
+        
+        // Display selected notes or possible chords based on the selection
+        <div style={styles.middleMiddle}> 
+          {selectedNotes.length === 1 
+            ? `Note: ${selectedNotes[0].note}` 
+            : selectedNotes.length > 1 
+              ? `Chords: ${possibleChords.length > 0 
+                  ? possibleChords.join(', ') 
+                  : 'No Chord Matched'}` 
+              : 'No Note Selected'}
+        </div>
+        
+        // Placeholder for additional components or information
+        <div style={styles.middleBottom}> 
+        </div>
+      </Col>
+      
+      // Right column for tuning selection
+      <Col xs={2} style={styles.rightSideSection}> 
+        <h5>Select Tuning</h5>
+        
+        // Render dropdown selectors for each string's tuning
+        {currentTuning.map((note, index) => (
+          <Form.Group key={index} controlId={`tuning-select-${index}`}> 
+            <Form.Label>String {(6 + index) % 6 + 1}</Form.Label>
+            <Form.Control 
+              as="select" 
+              value={note} 
+              onChange={(e) => handleTuningChange(index, e.target.value)} // Update tuning state
+            >
+              {notes.map((n, i) => (
+                // Dropdown options for all possible notes
+                <option key={i} value={n}>{n}</option> 
+              ))}
+            </Form.Control>
+          </Form.Group>
+        ))}
+      </Col>
+    </Row>
+  </Container>
+);
+
 };
 
 export default ChordFinder;
