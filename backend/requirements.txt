@@ -3,3 +3,6 @@ python-multipart
 fastapi[all]
 ollama
 pyyaml
+pytest 
+httpx 
+pytest-mock
