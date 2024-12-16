@@ -1,7 +1,23 @@
-import unittest  # Importing the unittest module for writing test cases
-from unittest.mock import patch, mock_open  # Importing utilities for mocking
-import yaml  # Importing the YAML library for handling YAML data
-from llm import LLM  # Importing the LLM class to test its functionality
+# Importing necessary libraries and modules
+
+# The `unittest` module is a built-in Python library used for writing and running unit tests.
+# Documentation: https://docs.python.org/3/library/unittest.html
+import unittest  
+
+# The `unittest.mock` module provides support for mocking objects during testing.
+# `patch` is used to replace real objects with mock ones, and `mock_open` is used for mocking file operations.
+# Documentation: https://docs.python.org/3/library/unittest.mock.html
+from unittest.mock import patch, mock_open  
+
+# The PyYAML library is used to handle YAML files, particularly for reading and writing configuration data.
+# PyYAML documentation: https://pyyaml.org/wiki/PyYAMLDocumentation
+import yaml 
+
+# Importing the LLM class, which contains methods for interacting with the Large Language Model (Llama3.2).
+# The implementation of this class is located in `llm.py` and integrates the Ollama API.
+# Ollama API documentation: https://ollama.com/docs
+from llm import LLM
+
 
 class TestLLM(unittest.TestCase):
     """

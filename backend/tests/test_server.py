@@ -1,6 +1,18 @@
-import pytest  # Importing pytest for writing test cases
-from fastapi.testclient import TestClient  # Importing TestClient for testing FastAPI endpoints
-from server import app  # Importing the FastAPI app from the server module
+# Importing necessary libraries and modules for testing
+
+# Pytest is a testing framework for Python, used for writing simple as well as complex test cases.
+# Documentation: https://docs.pytest.org/en/stable/
+import pytest  
+
+# The `TestClient` class from FastAPI is used to create a test client for simulating HTTP requests
+# to the FastAPI application during testing.
+# Documentation: https://fastapi.tiangolo.com/tutorial/testing/
+from fastapi.testclient import TestClient  
+
+# Importing the FastAPI application instance from the `server.py` file.
+# This allows the test client to send requests to the application for testing endpoints.
+from server import app
+
 
 # Create a test client instance to interact with the FastAPI application
 client = TestClient(app)

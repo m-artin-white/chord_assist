@@ -1,5 +1,15 @@
+// Importing necessary modules from external libraries
+
+// React is a JavaScript library for building user interfaces. 
+// It provides the base functionality for creating React components and rendering them.
+// Documentation: https://reactjs.org/docs/getting-started.html
 import React from 'react';
+
+// `Link` is a component from the `react-router-dom` library that enables navigation between different routes
+// without reloading the page. It creates a seamless single-page application (SPA) experience.
+// Documentation: https://reactrouter.com/en/main/components/link
 import { Link } from 'react-router-dom';
+
 
 function NavBar() {
   return (

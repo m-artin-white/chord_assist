@@ -1,5 +1,12 @@
-import ollama  # Importing the Ollama library for interacting with language models
-import yaml  # Importing the YAML library for parsing YAML files
+# Importing necessary libraries
+
+# The Ollama library is used to integrate and interact with the Llama3.2 language model.
+# Ollama documentation: https://ollama.com/docs
+import ollama  
+
+# The PyYAML library is used to handle YAML files, which are commonly used for configuration.
+# PyYAML documentation: https://pyyaml.org/wiki/PyYAMLDocumentation
+import yaml
 
 class LLM():
     def __init__(self):

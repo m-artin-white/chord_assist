@@ -1,9 +1,24 @@
-# FastAPI Server script
+# Importing necessary modules and classes from FastAPI
 
-from fastapi import FastAPI, Form  # Importing FastAPI framework and Form handling
-from fastapi.responses import JSONResponse  # Importing JSONResponse for structured responses
-from fastapi.middleware.cors import CORSMiddleware  # Importing CORS middleware for cross-origin requests
-from llm import LLM  # Importing the custom LLM class for querying the language model
+# FastAPI is a modern web framework for building APIs with Python, known for its high performance.
+# The `FastAPI` class is used to create an application instance, and `Form` is used to handle form data in API endpoints.
+# Documentation: https://fastapi.tiangolo.com/
+from fastapi import FastAPI, Form  
+
+# The `JSONResponse` class is used to create custom JSON responses for API endpoints.
+# Documentation: https://fastapi.tiangolo.com/advanced/custom-response/
+from fastapi.responses import JSONResponse  
+
+# The `CORSMiddleware` class is used to enable Cross-Origin Resource Sharing (CORS),
+# allowing the API to handle requests from different origins, such as frontend applications.
+# Documentation: https://fastapi.tiangolo.com/tutorial/cors/
+from fastapi.middleware.cors import CORSMiddleware  
+
+# Importing the LLM class from the `llm.py` module.
+# This class interacts with the Large Language Model (Llama3.2) through the Ollama API.
+# Ollama API documentation: https://ollama.com/docs
+from llm import LLM
+
 
 # Initialize the FastAPI app
 app = FastAPI()

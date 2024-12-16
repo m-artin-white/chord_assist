@@ -1,13 +1,42 @@
+// Importing necessary modules and components
+
+// React is a JavaScript library for building user interfaces. 
+// `useState` is a Hook that enables state management in functional components, and `useEffect` is used for handling side effects, such as data fetching or DOM updates.
+// Documentation: https://reactjs.org/docs/getting-started.html
 import React, { useState, useEffect } from 'react';
+
+// Axios is a promise-based HTTP client for making API requests from the frontend.
+// It is used here to interact with the backend API and fetch data.
+// Documentation: https://axios-http.com/docs/intro
 import axios from 'axios';
+
+// ReactMarkdown is a library for rendering Markdown content in React applications.
+// This simplifies the process of displaying Markdown-formatted text.
+// Documentation: https://github.com/remarkjs/react-markdown
 import ReactMarkdown from 'react-markdown';
+
+// Components from `react-bootstrap` are used for creating a responsive, styled UI:
+// - `Container`, `Row`, and `Col` help structure the layout.
+// - `Button`, `Form`, and `Spinner` provide styled UI elements for user interaction and feedback.
+// Documentation: https://react-bootstrap.github.io/
 import { Container, Row, Col, Button, Form, Spinner } from 'react-bootstrap';
+
+// Custom components and assets
+// `Fretboard` is a custom React component used for displaying an interactive guitar fretboard.
+// `UserPic` and `ChatbotPic` are image assets representing the user and chatbot avatars, respectively.
 import Fretboard from './Fretboard';
 import UserPic from '../assets/user.png';
 import ChatbotPic from '../assets/chatbot.png';
+
+// Tonal.js libraries for advanced music theory functionality
+// - `Chord` provides tools for chord analysis and generation.
+// - `Tone` is used for sound synthesis and audio generation in a musical context.
+// - `Note` enables operations with musical notes, such as parsing or transposing.
+// Documentation: https://github.com/tonaljs/tonal
 import * as Chord from '@tonaljs/chord';
 import * as Tone from 'tone';
 import * as Note from '@tonaljs/note';
+
 
 const ChordFinder = () => {
   const styles = {

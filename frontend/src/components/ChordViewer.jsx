@@ -1,7 +1,23 @@
+// Importing necessary modules and components
+
+// React is a JavaScript library for building user interfaces. 
+// `useState` is a React Hook that allows you to add state management to functional components.
+// Documentation: https://reactjs.org/docs/getting-started.html
 import React, { useState } from 'react';
+
+// The `Chord` component from the `@tombatossals/react-chords` library is used to render visual representations
+// of guitar chords on a fretboard. This library simplifies the process of creating dynamic chord diagrams.
+// Documentation: https://github.com/tombatossals/react-chords
 import Chord from '@tombatossals/react-chords/lib/Chord';
-import guitarChords from '../chord_data/guitar.json'; 
-import './ChordViewer.css'; 
+
+// `guitarChords` imports a JSON file containing chord data for the guitar, which is used to dynamically display chord information.
+// This allows the application to reference pre-defined chord structures for rendering.
+import guitarChords from '../chord_data/guitar.json';
+
+// Importing a custom CSS file (`ChordViewer.css`) to style the Chord Viewer component.
+// This ensures the component adheres to the desired design specifications.
+import './ChordViewer.css';
+
 
 const ChordViewer = () => {
   const [selectedNote, setSelectedNote] = useState('C'); // State to track the currently selected note, defaulting to "C"

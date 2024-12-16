@@ -5,7 +5,15 @@ import ChordFinder from './components/ChordFinder';
 import ChordViewer from './components/ChordViewer'
 import ProgressionViewer from './components/ProgressionViewer'
 import Resources from './components/Resources';
+// Importing necessary components from the `react-router-dom` library
+
+// `BrowserRouter` (aliased as `Router`) is a higher-order component that provides the routing context 
+// for the entire React application, enabling navigation between different views or pages.
+// `Routes` is a container for all the route definitions within the application.
+// `Route` is used to define individual routes, mapping paths to specific components.
+// Documentation: https://reactrouter.com/en/main
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (

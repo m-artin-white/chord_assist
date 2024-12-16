@@ -1,7 +1,29 @@
+// Importing necessary modules and components for testing
+
+// React is a JavaScript library for building user interfaces. 
+// It is imported here to enable the rendering and testing of React components in the test environment.
+// Documentation: https://reactjs.org/docs/getting-started.html
 import React from 'react';
+
+// Utilities from the `@testing-library/react` library are used for testing React components:
+// - `render` is used to render a React component into the test environment.
+// - `fireEvent` simulates user interactions, such as clicks or keypresses, on rendered components.
+// - `screen` provides query utilities to access elements in the rendered component tree.
+// Documentation: https://testing-library.com/docs/react-testing-library/intro/
 import { render, fireEvent, screen } from '@testing-library/react';
+
+// Importing the `Fretboard` component for testing.
+// This component represents the interactive guitar fretboard in the application.
 import Fretboard from '../components/Fretboard';
+
+// Functions from the `vitest` library, which is a fast and lightweight testing framework:
+// - `vi` is used to create mocks and spies for testing.
+// - `describe` groups related test cases for better organization.
+// - `test` defines individual test cases for specific functionality.
+// - `expect` is used for making assertions about the component's behavior and output.
+// Documentation: https://vitest.dev/
 import { vi, describe, test, expect } from 'vitest';
+
 
 describe('Fretboard Component', () => {
   test('selects a note on fret click', () => {

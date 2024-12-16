@@ -1,5 +1,17 @@
+// Importing necessary modules from external libraries
+
+// React is a JavaScript library for building user interfaces. 
+// `useState` is a React Hook that allows you to add state to functional components.
+// `useEffect` is a React Hook that lets you perform side effects, such as data fetching or DOM updates, in functional components.
+// Documentation: https://reactjs.org/docs/getting-started.html
 import React, { useState, useEffect } from "react";
+
+// The `@tonaljs/tonal` library provides tools for working with music theory in JavaScript.
+// `Key` is used to analyze and generate key signatures and related information.
+// `Progression` is used to work with chord progressions and understand their relationships in a musical context.
+// Documentation: https://github.com/tonaljs/tonal
 import { Key, Progression } from "@tonaljs/tonal";
+
 
 function ProgressionViewer() {
   const [chord, setChord] = useState("C"); // State to store the currently entered chord (default is "C")
